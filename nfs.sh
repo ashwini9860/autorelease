@@ -1,3 +1,4 @@
+#!/bin/bash
 if [ -f /etc/debian_version ]; then
      apt-get update
      if [ "$NETAPP_PROTOCOL_CIFS" == "cifs" ] && [ "$NETAPP_NO_VOLUME_CIFS" -gt "0" ]; then
