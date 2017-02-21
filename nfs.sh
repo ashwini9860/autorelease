@@ -1,9 +1,7 @@
 #!/bin/bash
-
-if [ -f /etc/debian_version ]; then
-     apt-get update
-     if [ "$NETAPP_PROTOCOL_CIFS" == "cifs" ] && [ "$NETAPP_NO_VOLUME_CIFS" -gt "0" ]; then
-         apt-get install -y cifs-utils #installation of nfs protocol
+#source /tmp/var.sh
+if [ -f /etc/debian_version ]; then apt-get update
+     if [ "$NETAPP_PROTOCOL_CIFS" == "cifs" ] && [ "$NETAPP_NO_VOLUME_CIFS" -gt "0" ]; then apt-get install -y cifs-utils
          for (( i=0; i<$NETAPP_NO_VOLUME_CIFS; i++ ))
          do
              if [ -d ${NETAPP_MOUNTC_CIFS[$i]} ]; then 
@@ -14,8 +12,7 @@ if [ -f /etc/debian_version ]; then
             fi
         done
      fi
-    if [ "$NETAPP_PROTOCOL_NFS" == "nfs" ] && [ "$NETAPP_NO_VOLUME_NFS" -gt "0" ]; then
-          apt-get install -y nfs-common #installation of nfs protocol
+    if [ "$NETAPP_PROTOCOL_NFS" == "nfs" ] && [ "$NETAPP_NO_VOLUME_NFS" -gt "0" ]; then apt-get install -y nfs-common
           for (( i=0; i<$NETAPP_NO_VOLUME_NFS; i++ ))
           do
               if [ -d ${NETAPP_MOUNTC_NFS[$i]} ]; then 
